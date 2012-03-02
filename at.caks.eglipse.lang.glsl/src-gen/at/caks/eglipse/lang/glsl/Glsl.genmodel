@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/at.caks.eglipse.lang.glsl/src-gen"
+    editDirectory="/at.caks.eglipse.lang.glsl.edit/src" editorDirectory="/at.caks.eglipse.lang.glsl.editor/src"
+    modelPluginID="at.caks.eglipse.lang.glsl" forceOverwrite="true" modelName="Glsl"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="at.caks.eglipse.lang.glsl.edit"
+    editorPluginID="at.caks.eglipse.lang.glsl.editor">
+  <genPackages prefix="Glsl" basePackage="at.caks.eglipse.lang.glsl" disposableProviderFactory="true"
+      ecorePackage="Glsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Glsl.ecore#//LogicOp">
+      <genEnumLiterals ecoreEnumLiteral="Glsl.ecore#//LogicOp/NOT_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="Glsl.ecore#//LogicOp/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="Glsl.ecore#//LogicOp/LESSER"/>
+      <genEnumLiterals ecoreEnumLiteral="Glsl.ecore#//LogicOp/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="Glsl.ecore#//LogicOp/LESSER_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="Glsl.ecore#//LogicOp/GREATER_EQUAL"/>
+    </genEnums>
+    <genClasses ecoreClass="Glsl.ecore#//SourceFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SourceFile/pre"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SourceFile/uniforms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SourceFile/attribs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SourceFile/prototypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SourceFile/functions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SourceFile/variables"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//PrecompilerStatement"/>
+    <genClasses ecoreClass="Glsl.ecore#//PrecompilerVersion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//PrecompilerVersion/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//PrecompilerVersion/profile"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//Symbol"/>
+    <genClasses ecoreClass="Glsl.ecore#//FunctionPrototype">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//FunctionPrototype/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//FunctionPrototype/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//FunctionPrototype/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//FunctionPrototype/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//Parameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//Parameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//Parameter/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//Type/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//ScalarType"/>
+    <genClasses ecoreClass="Glsl.ecore#//ComplexType"/>
+    <genClasses ecoreClass="Glsl.ecore#//VecType"/>
+    <genClasses ecoreClass="Glsl.ecore#//MatType"/>
+    <genClasses ecoreClass="Glsl.ecore#//FunctionDefinition"/>
+    <genClasses ecoreClass="Glsl.ecore#//FunctionCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//FunctionCall/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Glsl.ecore#//FunctionCall/func"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//FunctionCall/args"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//Statement"/>
+    <genClasses ecoreClass="Glsl.ecore#//SwitchCase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//SwitchCase/case"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//SwitchCase/fcase"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SwitchCase/then"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//BlockStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//BlockStatement/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//JumpStatement"/>
+    <genClasses ecoreClass="Glsl.ecore#//VariableDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//VariableDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//VariableDeclaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//VariableDeclaration/init"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//AssignmentStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Glsl.ecore#//AssignmentStatement/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//AssignmentStatement/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//Exp"/>
+    <genClasses ecoreClass="Glsl.ecore#//AbstractDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//AbstractDefinition/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//Definition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//Definition/args"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//DeclaredParameter"/>
+    <genClasses ecoreClass="Glsl.ecore#//Evaluation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//Evaluation/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//UniformDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//UniformDeclaration/qualifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//UniformDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//UniformDeclaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//InAttributeDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//InAttributeDeclaration/qualifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//InAttributeDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//InAttributeDeclaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//OutAttributeDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//OutAttributeDeclaration/qualifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//OutAttributeDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//OutAttributeDeclaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//InOutAttributeDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//InOutAttributeDeclaration/qualifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//InOutAttributeDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//InOutAttributeDeclaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//VoidType"/>
+    <genClasses ecoreClass="Glsl.ecore#//IntType"/>
+    <genClasses ecoreClass="Glsl.ecore#//UIntType"/>
+    <genClasses ecoreClass="Glsl.ecore#//BoolType"/>
+    <genClasses ecoreClass="Glsl.ecore#//FloatType"/>
+    <genClasses ecoreClass="Glsl.ecore#//Vec2Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Vec3Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Vec4Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//IVec2Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//IVec3Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//IVec4Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//UVec2Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//UVec3Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//UVec4Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//BVec2Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//BVec3Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//BVec4Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat2Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat3Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat4Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat2x2Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat2x3Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat2x4Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat3x2Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat3x3Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat3x4Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat4x2Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat4x3Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//Mat4x4Type"/>
+    <genClasses ecoreClass="Glsl.ecore#//SymbolRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Glsl.ecore#//SymbolRef/symbol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SymbolRef/actuals"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//IfStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//IfStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//IfStatement/then"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//IfStatement/else"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//WhileStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//WhileStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//WhileStatement/do"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//ForStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//ForStatement/a"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//ForStatement/b"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//ForStatement/c"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//ForStatement/do"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//SwitchStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SwitchStatement/a"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SwitchStatement/cases"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//Return">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//Return/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//InlineIfExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//InlineIfExp/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//InlineIfExp/then"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//InlineIfExp/else"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//LogicExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//LogicExp/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//LogicExp/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//LogicExp/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//AddExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//AddExp/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//AddExp/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//AddExp/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//MulExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//MulExp/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//MulExp/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//MulExp/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//SymbolRefInvocation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SymbolRefInvocation/symbolref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SymbolRefInvocation/actuals"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//SymbolRefMember">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//SymbolRefMember/symbolref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//SymbolRefMember/member"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//Constructor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//Constructor/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Glsl.ecore#//Constructor/params"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//IntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//IntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//UIntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//UIntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//FloatLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//FloatLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Glsl.ecore#//BoolLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Glsl.ecore#//BoolLiteral/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
