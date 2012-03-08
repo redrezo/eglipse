@@ -4,6 +4,7 @@
 package at.caks.eglipse.lang.glsl.ui.outline;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,6 +20,7 @@ import org.eclipse.xtext.ui.label.StylerFactory;
 
 import com.google.inject.Inject;
 
+import at.caks.eglipse.lang.glsl.glsl.Exp;
 import at.caks.eglipse.lang.glsl.glsl.FunctionDefinition;
 import at.caks.eglipse.lang.glsl.glsl.FunctionPrototype;
 import at.caks.eglipse.lang.glsl.glsl.InAttributeDeclaration;
@@ -85,6 +87,13 @@ public class GlslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 		
 	}
 	
+	public List<EObject> getChildren(Symbol s) {
+		return Collections.emptyList();
+	}
+	
+	public List<EObject> getChildren(Exp s) {
+		return Collections.emptyList();
+	}
 	
 	public List<EObject> getChildren(at.caks.eglipse.lang.glsl.glsl.AddExp exp) {
 		List<EObject> res = new ArrayList<EObject>();

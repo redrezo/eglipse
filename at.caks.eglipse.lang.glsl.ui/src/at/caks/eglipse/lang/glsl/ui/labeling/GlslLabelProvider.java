@@ -4,12 +4,15 @@
 package at.caks.eglipse.lang.glsl.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.StyledString.Styler;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import org.eclipse.xtext.ui.label.StylerFactory;
@@ -21,7 +24,9 @@ import at.caks.eglipse.lang.glsl.glsl.InOutAttributeDeclaration;
 import at.caks.eglipse.lang.glsl.glsl.OutAttributeDeclaration;
 import at.caks.eglipse.lang.glsl.glsl.Parameter;
 import at.caks.eglipse.lang.glsl.glsl.Symbol;
+import at.caks.eglipse.lang.glsl.glsl.Type;
 import at.caks.eglipse.lang.glsl.glsl.UniformDeclaration;
+import at.caks.eglipse.lang.glsl.glsl.VariableDeclaration;
 import at.caks.eglipse.lang.glsl.services.GlslGrammarAccess.AttributeDeclarationElements;
 
 import com.google.inject.Inject;
@@ -37,38 +42,62 @@ public class GlslLabelProvider extends DefaultEObjectLabelProvider {
 	public GlslLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
-
+	
 	String text(Constructor ele) {
 		return "Constructor of " + ele.getType().getName();
 	}
 	
 	
-	String text(FunctionPrototype ele) {
-		StringBuilder b = new StringBuilder();
-		b.append(ele.getType().getName() + " " + ele.getName() + "(");
+	Object text(FunctionPrototype ele) {
+		StyledString s = new StyledString();
+		int begin = 0;
+		String add = ele.getType().getName();
+		s.append(add);
+		s.setStyle(begin, add.length(), stylerFactory.createXtextStyleAdapterStyler(getTypeTextStyle()));
+		s.append(" ");
+		begin += add.length() + 1;
+		add = ele.getName();
+		s.append(add);
+		s.append(" (");
+		begin += add.length() + 2;
 		for (Parameter p : ele.getParams()) {
-			b.append(p.getType().getName());
-			if (ele.getParams().indexOf(p) != ele.getParams().size() - 1) b.append(", ");
+			add = p.getType().getName();
+			s.append(add);
+			s.setStyle(begin, add.length(), stylerFactory.createXtextStyleAdapterStyler(getTypeTextStyle()));
+			begin += add.length();
+			if (ele.getParams().indexOf(p) != ele.getParams().size() - 1) {
+				s.append(", ");
+				begin += 2;
+			}
 		}
-		b.append(")");
-		return b.toString();
+		s.append(")");
+		//s.setStyle(s.length(), add.length(), stylerFactory.createXtextStyleAdapterStyler(getQualifierTextStyle()));
+		return s;
+	}
+	
+	String image(Type type) {
+		return "type.png";
 	}
 	
 	String image(Symbol s) {
-		return "symbol.gif";
+		return "function.png";
+	}
+	
+	String image(VariableDeclaration var) {
+		return "variable.png";
 	}
 	
 	String image(UniformDeclaration u) {
-		return "uniform.gif";
+		return "uniform.png";
 	}
 	
 	String image(InOutAttributeDeclaration u) {
-		return "inout.gif";
+		return "attribute.png";
 	}
 	
 	
 	String image(OutAttributeDeclaration u) {
-		return "out.gif";
+		return "attribute.png";
 	}
 	
 //	String text(InAttributeDeclaration d) {
@@ -144,7 +173,7 @@ public class GlslLabelProvider extends DefaultEObjectLabelProvider {
 	
 	protected TextStyle getTypeTextStyle() {
 		TextStyle textStyle = new TextStyle();
-		textStyle.setColor(new RGB(149, 125, 71));
+		textStyle.setColor(new RGB(127, 0, 85));
 //		textStyle.setStyle(SWT.BOLD);
 		return textStyle;
 	}
@@ -152,9 +181,22 @@ public class GlslLabelProvider extends DefaultEObjectLabelProvider {
 	
 	
 	String image(InAttributeDeclaration u) {
-		return "in.gif";
+		return "attribute.png";
 	}
 	
+	Object text(VariableDeclaration d) {
+		StyledString s = new StyledString();
+		int begin = 0;
+		String add = d.getType().getName();
+		s.append(add);
+		s.setStyle(begin, add.length(), stylerFactory.createXtextStyleAdapterStyler(getTypeTextStyle()));
+		s.append(" ");
+		begin += add.length() + 1;
+		add = d.getName();
+		s.append(add);
+		//s.setStyle(s.length(), add.length(), stylerFactory.createXtextStyleAdapterStyler(getQualifierTextStyle()));
+		return s;
+	}
 	
 /*
 	//Labels and icons can be computed like this:
