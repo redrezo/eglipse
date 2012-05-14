@@ -1,0 +1,381 @@
+grammar org.eglipse.lang.glsl.Glsl hidden(WS, ML_COMMENT, SL_COMMENT, NL, PRECOMPILER_STATEMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate glsl "http://www.eglipse.org/lang/Glsl"
+
+SourceFile:
+	(pre+=PrecompilerStatement)*
+	(
+		uniforms+=UniformDeclaration SEMICOLON |
+		attribs+=AttributeDeclaration SEMICOLON |
+		prototypes+=FunctionPrototype SEMICOLON |
+		functions+=FunctionDefinition |
+		variables+=VariableDeclaration SEMICOLON
+	)*
+	;
+
+terminal ATTRIBUTE: 'attribute';
+terminal CONST: 'const';
+terminal BOOL: 'bool';
+terminal FLOAT: 'float';
+terminal INTX: 'int';
+terminal UINT: 'uint';
+terminal BREAK: 'break';
+terminal CONTINUE: 'continue';
+terminal DO: 'do';
+terminal ELSE: 'else';
+terminal FOR: 'for';
+terminal IF: 'if';
+terminal DISCARD: 'discard';
+terminal RETURN: 'return';
+terminal SWITCH: 'switch';
+terminal CASE: 'case';
+terminal DEFAULT: 'default';
+terminal BVEC2: 'bvec2';
+terminal BVEC3: 'bvec3';
+terminal BVEC4: 'bvec4';
+terminal IVEC2: 'ivec2';
+terminal IVEC3: 'ivec3';
+terminal IVEC4: 'ivec4';
+terminal UVEC2: 'uvec2';
+terminal UVEC3: 'uvec3';
+terminal UVEC4: 'uvec4';
+terminal VEC2: 'vec2';
+terminal VEC3: 'vec3';
+terminal VEC4: 'vec4';
+terminal MAT2: 'mat2';
+terminal MAT3: 'mat3';
+terminal MAT4: 'mat4';
+terminal CENTROID: 'centroid';
+terminal IN: 'in';
+terminal OUT: 'out';
+terminal INOUT: 'inout';
+terminal UNIFORM: 'uniform';
+terminal VARYING: 'varying';
+
+terminal NOPERSPECTIVE: 'noperspective';
+terminal FLAT: 'flat';
+terminal SMOOTH: 'smooth';
+terminal LAYOUT: 'layout';
+terminal MAT2X2: 'mat2x2';
+terminal MAT2X3: 'mat2x3';
+terminal MAT2X4: 'mat2x4';
+terminal MAT3X2: 'mat3x2';
+terminal MAT3X3: 'mat3x3';
+terminal MAT3X4: 'mat3x4';
+terminal MAT4X2: 'mat4x2';
+terminal MAT4X3: 'mat4x3';
+terminal MAT4X4: 'mat4x4';
+
+// TODO lots of data types
+//SAMPLER1D SAMPLER2D SAMPLER3D SAMPLERCUBE SAMPLER1DSHADOW SAMPLER2DSHADOW
+//SAMPLERCUBESHADOW SAMPLER1DARRAY SAMPLER2DARRAY SAMPLER1DARRAYSHADOW
+//SAMPLER2DARRAYSHADOW ISAMPLER1D ISAMPLER2D ISAMPLER3D ISAMPLERCUBE
+//ISAMPLER1DARRAY ISAMPLER2DARRAY USAMPLER1D USAMPLER2D USAMPLER3D
+//USAMPLERCUBE USAMPLER1DARRAY USAMPLER2DARRAY
+//SAMPLER2DRECT SAMPLER2DRECTSHADOW ISAMPLER2DRECT USAMPLER2DRECT
+//SAMPLERBUFFER ISAMPLERBUFFER USAMPLERBUFFER
+//SAMPLER2DMS ISAMPLER2DMS USAMPLER2DMS
+//SAMPLER2DMSArray ISAMPLER2DMSArray USAMPLER2DMSArray
+//
+
+terminal STRUCT: 'struct';
+terminal VOID: 'void';
+terminal WHILE: 'while';
+
+terminal TYPE_NAME: 'WTF IS THIS?';
+
+terminal FLOATCONSTANT returns ecore::EBigDecimal: ('0'..'9')* '.' ('0'..'9')+;
+terminal INTCONSTANT returns ecore::EInt: ('0'..'9')+;
+terminal UINTCONSTANT returns ecore::EInt: ('0'..'9')+ ('u'|'U');
+terminal BOOLCONSTANT returns ecore::EBoolean: 'true' | 'false';
+
+terminal FIELD_SELECTION: 'what is this?';
+
+terminal LEFT_OP: '<<';
+terminal RIGHT_OP: '>>';
+
+terminal INC_OP: '++';
+terminal DEC_OP: '--';
+//terminal LE_OP: '<=';
+//terminal GE_OP: '>=';
+//terminal EQ_OP: '==';
+//terminal NE_OP: '!=';
+
+terminal AND_OP: '&&';
+terminal OR_OP: '||';
+terminal XOR_OP: '^???'; // XOR_OP VS CARET =?
+
+terminal MUL_ASSIGN: '*=';
+terminal DIV_ASSIGN: '/=';
+terminal ADD_ASSIGN: '+=';
+terminal MOD_ASSIGN: '%=';
+terminal LEFT_ASSIGN: '??';
+terminal RIGHT_ASSIGN: '??ASDF';
+terminal AND_ASSIGN: '&=';
+terminal XOR_ASSIGN: '^=';
+terminal OR_ASSIGN: '|=';
+terminal SUB_ASSIGN: '-=';
+
+//terminal LEFT_PAREN: '(';
+//terminal RIGHT_PAREN: ')';
+terminal LEFT_BRACKET: '[';
+terminal RIGHT_BRACKET: ']';
+terminal LEFT_BRACE: '{';
+terminal RIGHT_BRACE: '}';
+//terminal COMMA: ',';
+terminal COLON: ':';
+//terminal EQUAL: '=';
+terminal SEMICOLON: ';';
+terminal BANG: '!';
+terminal PLUS: '+';
+terminal DASH: '-';
+terminal TILDE: '~';
+terminal STAR: '*';
+terminal SLASH: '/';
+terminal PERCENT: '%';
+//terminal LEFT_ANGLE: '<';
+//terminal RIGHT_ANGLE: '>';
+terminal VERTICAL_BAR: '|';
+terminal CARET: '^';
+terminal AMPERSAND: '&';
+terminal QUESTION: '?';
+
+terminal INVARIANT: 'invariant';
+terminal HIGH_PRECISION: 'high';
+terminal MEDIUM_PRECISION: 'medium';
+terminal LOW_PRECISION: 'low';
+terminal PRECISION: 'precision';
+
+terminal IDENTIFIER: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+
+
+terminal ML_COMMENT	: '/*' -> '*/';
+
+terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal PRECOMPILER_STATEMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal NL : ('\r'? '\n');
+
+terminal WS			: (' '|'\t'|'\r'|'\n')+;
+
+terminal ANY_OTHER: .;
+
+
+
+
+PrecompilerStatement:
+	PrecompilerVersion
+;
+
+PrecompilerVersion:
+	'#version' version=INTCONSTANT (profile=IDENTIFIER)?
+;
+
+Declaration returns Symbol:
+	UniformDeclaration SEMICOLON |
+	AttributeDeclaration SEMICOLON |
+	FunctionPrototype SEMICOLON |
+	VariableDeclaration |
+	FunctionDefinition
+//	GlobalDeclaration |
+//	LocalDeclaration
+;
+
+
+GlobalDeclaration returns Symbol:
+	UniformDeclaration SEMICOLON |
+	AttributeDeclaration SEMICOLON |
+	FunctionPrototype SEMICOLON |
+	VariableDeclaration |
+	FunctionDefinition
+;
+
+LocalDeclaration returns Symbol:
+	VariableDeclaration
+;
+
+UniformDeclaration returns Symbol:
+	{UniformDeclaration} qualifier=UNIFORM type=Type name=IDENTIFIER
+;
+
+AttributeDeclaration returns Symbol:
+	{InAttributeDeclaration} qualifier=IN type=Type name=IDENTIFIER |
+	{OutAttributeDeclaration} qualifier=OUT type=Type name=IDENTIFIER |
+	{InOutAttributeDeclaration} qualifier=INOUT type=Type name=IDENTIFIER
+;
+
+
+FunctionPrototype: 
+	type=Type name=IDENTIFIER "(" (VOID? | params+=Parameter ("," params+=Parameter)*) ")"
+;
+
+Parameter:
+	type=Type name=IDENTIFIER
+;
+
+Type:
+	ScalarType |
+	ComplexType |
+	{VoidType} name=VOID
+;
+
+ScalarType:
+	{IntType} name=INTX |
+	{UIntType} name=UINT |
+	{BoolType} name=BOOL |
+	{FloatType} name=FLOAT
+;
+
+ComplexType:
+	VecType | 
+	MatType
+;
+
+VecType:
+	{Vec2Type} name=VEC2 |
+	{Vec3Type} name=VEC3 |
+	{Vec4Type} name=VEC4 |
+	{IVec2Type} name=IVEC2 |
+	{IVec3Type} name=IVEC3 |
+	{IVec4Type} name=IVEC4 |
+	{UVec2Type} name=UVEC2 |
+	{UVec3Type} name=UVEC3 |
+	{UVec4Type} name=UVEC4 |
+	{BVec2Type} name=BVEC2 |
+	{BVec3Type} name=BVEC3 |
+	{BVec4Type} name=BVEC4
+;
+
+MatType:
+	{Mat2Type} name=MAT2 |
+	{Mat3Type} name=MAT3 |
+	{Mat4Type} name=MAT4 |
+	{Mat2x2Type} name=MAT2X2 |
+	{Mat2x3Type} name=MAT2X3 |
+	{Mat2x4Type} name=MAT2X4 |
+	{Mat3x2Type} name=MAT3X2 |
+	{Mat3x3Type} name=MAT3X3 |
+	{Mat3x4Type} name=MAT3X4 |
+	{Mat4x2Type} name=MAT4X2 |
+	{Mat4x3Type} name=MAT4X3 |
+	{Mat4x4Type} name=MAT4X4
+;
+
+FunctionDefinition: 
+	FunctionPrototype LEFT_BRACE statements+=Statement* RIGHT_BRACE
+;
+
+FunctionCall:
+	name="function" func=[FunctionDefinition|IDENTIFIER] "(" (args+=(Exp) ("," args+=Exp)*)? ")"
+;
+
+Statement:
+	BlockStatement |
+	VariableDeclaration |
+	AssignmentStatement |
+	JumpStatement |
+	{SymbolRef} symbol=[Symbol|IDENTIFIER] ("(" (actuals+=Exp)? ("," actuals+=Exp)* ")")? SEMICOLON|
+	{IfStatement} IF "(" condition=Exp ")" then=Statement(=> ELSE else=Statement)? |
+	{WhileStatement} WHILE "(" condition=Exp ")" do=Statement |
+	{WhileStatement} DO do=BlockStatement WHILE "(" condition=Exp ")" SEMICOLON |
+	{ForStatement} FOR "(" a=(Exp|Declaration) SEMICOLON (b=Exp)? SEMICOLON (c=Exp)? ")" do=Statement |
+	// TODO fix switch statement
+	{SwitchStatement} SWITCH "(" a=Exp ")" LEFT_BRACE 
+		cases+=SwitchCase
+	RIGHT_BRACE
+;
+
+SwitchCase:
+	CASE (case=INTCONSTANT | case=UINTCONSTANT | fcase=FLOATCONSTANT) COLON then=Statement |
+	DEFAULT COLON then=Statement
+;
+
+BlockStatement:
+	LEFT_BRACE statements+=Statement* RIGHT_BRACE
+;
+
+JumpStatement:
+	CONTINUE SEMICOLON |
+	BREAK SEMICOLON |
+	{Return} RETURN SEMICOLON |
+	{Return} RETURN value=Exp SEMICOLON |
+	DISCARD SEMICOLON
+;
+
+
+VariableDeclaration:
+	type=Type name=IDENTIFIER ("=" init=Exp)? SEMICOLON
+;
+
+AssignmentStatement:
+	variable=[Symbol|IDENTIFIER] "=" right=Exp SEMICOLON
+;
+
+Exp:
+	LogicExp ({InlineIfExp.condition=current} => QUESTION then=Exp COLON else=Exp)?
+;
+
+LogicExp returns Exp:
+	AddExp ({LogicExp.left=current} op=LogicOp right=AddExp)?
+;
+
+enum LogicOp:
+	NOT_EQUAL="!=" | 
+	EQUAL="==" | 
+	LESSER="<" | 
+	GREATER=">" | 
+	LESSER_EQUAL="<=" | 
+	GREATER_EQUAL=">="
+;
+
+AddExp returns Exp:
+	MulExp ({AddExp.left=current} op=AddOp right=MulExp)*
+;
+
+AddOp:
+	PLUS |
+	DASH
+;
+
+MulExp returns Exp:
+	PostfixExp ({MulExp.left=current} op=MulOp right=PostfixExp)*
+;
+
+
+MulOp: STAR | SLASH | PERCENT;
+
+
+PostfixExp returns Exp:
+	{SymbolRef} symbol=[Symbol|IDENTIFIER] (
+		{SymbolRefInvocation.symbolref = current} => "(" (actuals+=Exp)? ("," actuals+=Exp)* ")"  |
+		{SymbolRefMember.symbolref = current} => "." member=("x"|"y"|"z"|"w")
+	)? |
+	Atomic
+;
+
+Atomic returns Exp:
+	{Constructor} type=ComplexType "(" (params+=Exp ("," params+=Exp)*)? ")" |
+	{IntegerLiteral} value=INTCONSTANT |
+	{UIntegerLiteral} value=UINTCONSTANT |
+	{FloatLiteral} value=FLOATCONSTANT |
+	{BoolLiteral} value=BOOLCONSTANT |
+	"(" Exp ")"
+;
+
+AbstractDefinition:
+	Definition | DeclaredParameter
+;
+
+Definition:
+	name=IDENTIFIER ("(" args+=DeclaredParameter ("," args+=DeclaredParameter)* ")")?
+;
+
+DeclaredParameter:
+	name=IDENTIFIER
+;
+
+Evaluation:
+	expression=Exp SEMICOLON
+;

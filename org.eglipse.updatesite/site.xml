@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.eglipse.lang.glsl.sdk_1.0.0.201205141940.jar" id="org.eglipse.lang.glsl.sdk" version="1.0.0.201205141940">
+      <category name="eglipse"/>
+   </feature>
+   <category-def name="eglipse" label="Eglipse">
+      <description>
+         Eglipse projects
+      </description>
+   </category-def>
+</site>
