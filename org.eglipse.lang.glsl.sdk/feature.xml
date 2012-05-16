@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eglipse.lang.glsl.sdk"
-      label="GLSL Language Support"
+      id="org.eglipse.lang.glsl.editor"
+      label="GLSL Editor"
       version="1.0.0.qualifier">
+
+   <url>
+      <update label="eglipse updates" url="http://updatesite.eglipse.org"/>
+   </url>
 
    <includes
          id="org.eclipse.xtext.runtime"
