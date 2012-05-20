@@ -3,7 +3,7 @@
    <description name="eglipse - Open GL Tooling" url="http://updatesite.eglipse.org/">
       eglipse update site
    </description>
-   <feature url="features/org.eglipse.lang.glsl.editor_1.0.0.201205142344.jar" id="org.eglipse.lang.glsl.editor" version="1.0.0.201205142344">
+   <feature url="features/org.eglipse.lang.glsl.editor.feature_0.0.1.qualifier.jar" id="org.eglipse.lang.glsl.editor.feature" version="0.0.1.qualifier">
       <category name="eglipse"/>
    </feature>
    <category-def name="eglipse" label="eglipse - OpenGL Tooling for eclipse"/>

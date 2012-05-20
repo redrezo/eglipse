@@ -1,63 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <prerequisites>
-    <maven>3.0</maven>
-  </prerequisites>
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
 
-  <groupId>org.eglipse</groupId>
-  <artifactId>org.eglipse</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>org.eglipse</groupId>
+	<artifactId>org.eglipse</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <properties>
-    <tycho-version>0.14.0</tycho-version>
+	<properties>
+		<tycho-version>0.14.0</tycho-version>
+		<manifest-location>META-INF</manifest-location>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-    <manifest-location>META-INF</manifest-location>
-  </properties>
+	<modules>
+		<module>../org.eglipse.target</module>
 
-  <modules>
-    <module>../org.eglispe.lang.glsl</module>
-    <module>../org.eglipse.lang.glsl.ui</module>
+		<module>../org.eglipse.lang.glsl</module>
+		<module>../org.eglipse.lang.glsl.ui</module>
 
-    <module>../org.eglipse.lang.glsl.editor</module>
+		<!-- module>../org.eglipse.lang.glsl.tests</module> missing dep org.hamcrest -->
+		<module>../org.eglipse.lang.glsl.sdk</module>
 
-    <module>../org.eglipse.updatesite</module>
-  </modules>
+		<module>../org.eglipse.updatesite</module>
+	</modules>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.codehaus.plexus</groupId>
-        <artifactId>plexus-utils</artifactId>
-        <version>2.0.7</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+	<!-- repositories> <repository> <id>mwe2lang</id> <layout>p2</layout> <url>file:/E:\targets\eglipse\emft-mwe-2-lang-Update-2.2.0</url> 
+		</repository> <repository> <id>xtext</id> <layout>p2</layout> <url>file:/E:\targets\eglipse\xtext-2.3.0M7</url> 
+		</repository> <repository> <id>xpand</id> <layout>p2</layout> <url>file:/E:\targets\eglipse\xpand-1.2.1M7</url> 
+		</repository> <repository> <id>mwe</id> <layout>p2</layout> <url>file:/E:\targets\eglipse\mwe-2.2.0</url> 
+		</repository> <repository> <id>platform</id> <layout>p2</layout> <url>file:/E:\targets\eglipse\platform-3.7.2</url> 
+		</repository> <repository> <id>jdt</id> <layout>p2</layout> <url>file:/E:\targets\eglipse\jdt-3.7.2</url> 
+		</repository> <repository> <id>emf</id> <layout>p2</layout> <url>file:/E:\targets\eglipse\emf-2.7.2</url> 
+		</repository> </repositories -->
 
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>2.3.1</version>
-          <configuration>
-            <archive>
-              <manifestFile>${manifest-location}/MANIFEST.MF</manifestFile>
-            </archive>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.felix</groupId>
-          <artifactId>maven-bundle-plugin</artifactId>
-          <version>2.1.0</version>
-          <configuration>
-            <manifestLocation>${manifest-location}</manifestLocation>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>2.0.7</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-source-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<!-- target platform -->
+
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3.1</version>
+					<configuration>
+						<archive>
+							<manifestFile>${manifest-location}/MANIFEST.MF</manifestFile>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>2.1.0</version>
+					<configuration>
+						<manifestLocation>${manifest-location}</manifestLocation>
+					</configuration>
+				</plugin>
+
+
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+					<target>
+						<artifact>
+							<groupId>org.eglipse</groupId>
+							<artifactId>org.eglipse.target</artifactId>
+							<version>0.0.1-SNAPSHOT</version>
+							<classifier>eglipse</classifier>
+						</artifact>
+					</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
 </project>
