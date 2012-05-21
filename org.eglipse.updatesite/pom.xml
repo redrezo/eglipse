@@ -15,20 +15,6 @@
 	</parent>
 
 	<artifactId>org.eglipse.updates</artifactId>
-	<packaging>eclipse-repository</packaging>
+	<packaging>eclipse-update-site</packaging>
 
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-repository-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<includeAllDependencies>false</includeAllDependencies>
-					<compress>true</compress>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>

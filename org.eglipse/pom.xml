@@ -24,7 +24,7 @@
 		<module>../org.eglipse.lang.glsl</module>
 		<module>../org.eglipse.lang.glsl.ui</module>
 
-		<!-- module>../org.eglipse.lang.glsl.tests</module> missing dep org.hamcrest -->
+		<!-- <module>../org.eglipse.lang.glsl.tests</module> still missing dependency org.hamcrest  -->
 		<module>../org.eglipse.lang.glsl.sdk</module>
 
 		<module>../org.eglipse.updatesite</module>
@@ -120,6 +120,9 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-packaging-plugin</artifactId>
+				<configuration>
+					<archiveSite>true</archiveSite>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
