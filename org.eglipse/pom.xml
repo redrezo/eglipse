@@ -25,7 +25,7 @@
 		<module>../org.eglipse.lang.glsl.ui</module>
 
 		<!-- <module>../org.eglipse.lang.glsl.tests</module> still missing dependency org.hamcrest  -->
-		<module>../org.eglipse.lang.glsl.sdk</module>
+		<module>../org.eglipse.lang.glsl.editor.feature</module>
 
 		<module>../org.eglipse.updatesite</module>
 	</modules>
