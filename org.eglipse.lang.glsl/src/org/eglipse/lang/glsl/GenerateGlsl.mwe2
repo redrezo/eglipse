@@ -5,7 +5,7 @@ import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
 var grammarURI = "classpath:/org/eglipse/lang/glsl/Glsl.xtext"
-var file.extensions = "glsl"
+var file.extensions = "glsl,frag,vert,geom"
 var projectName = "org.eglipse.lang.glsl"
 var runtimeProject = "../${projectName}"
 

@@ -9,7 +9,7 @@
             class="org.eglipse.lang.glsl.ui.GlslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="glsl"
+            extensions="glsl,vert,frag,geom"
             id="org.eglipse.lang.glsl.Glsl"
             name="Glsl Editor">
         </editor>
