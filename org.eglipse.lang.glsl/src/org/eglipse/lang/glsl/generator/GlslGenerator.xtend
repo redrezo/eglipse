@@ -3,13 +3,115 @@
  */
 package org.eglipse.lang.glsl.generator
 
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.generator.*
+
+import org.eglipse.lang.glsl.glsl.*
+
+import static extension org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
+import org.eclipse.emf.common.util.URI
+
+//org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 
 class GlslGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		//TODO implement me
+		// generate java accessor
+		println("FUCK FUCK FUCK");
+		fsa.generateFile(resource.URI.javaFileName, resource.generateAccessor);
 	}
+	
+	def dispatch generateAccessor(Resource resource) {
+		'''
+		package «resource.URI.getPackage»;
+		
+		import java.net.URI;
+		import java.io.InputStream;
+		
+		public class «resource.URI.javaName» {
+			
+			public static InputStream asInputStream() {
+				return «resource.URI.javaName».class.getClassLoader().getResourceAsStream("«resource.URI.fileName»");
+			}
+			public static URI asURI() {
+				return «resource.URI.javaName».class.getClassLoader().getResource("«resource.URI.fileName»");
+			}
+			
+		}
+		'''
+	}
+	
+//	 def dispatch getContents(Entity entity) '''
+//    package <<entity.packageName>>;
+//    
+//    public class <<entity.name>> {
+//      
+//      <<FOR f:entity.features>>
+//        private <<f.type.javaName>> <<f.name>>;
+//        
+//        public <<f.type.javaName>> get<<f.name.toFirstUpper>>() {
+//          return this.<<f.name>>;
+//        }
+//        
+//        public void set<<f.name.toFirstUpper>>(<<f.type.javaName>> <<f.name>>) {
+//          this.<<f.name>> = <<f.name>>;
+//        }
+//      <<ENDFOR>>
+//      
+//    }
+//  '''
+  
+  def dispatch generateContent(Resource resource) {
+  	val sourceFile = resource.contents.filter(typeof(SourceFile)).head
+	'''
+  	«IF !resource.URI.getPackage.equals("")»
+	package «resource.URI.getPackage»;
+	
+    «ENDIF»
+	public class «resource.URI.javaName» {
+		
+		private int shaderId;
+		private String file = «resource.URI»
+		
+		public «resource.URI.javaName»() {
+			
+		}
+		
+		private void createShader() {
+			shaderId = GL20.glCreateShader(GL20.GL_VERTEX_SHADER);
+		}
+		
+		private void loadShader() {
+			
+		}
+	}
+	'''
+  }
+  
+  def getFileName(URI uri) {
+    uri.getPackage.replace(".", "/") + "/" + uri.lastSegment
+  }
+  
+  def getJavaFileName(URI uri) {
+    uri.javaNameWithPackage.replace(".", "/") + ".java"
+  }
+  
+  def getJavaName(URI uri) {
+     uri.lastSegment.replaceAll(".glsl", "") + "Shader"
+  }
+  
+  def getJavaNameWithPackage(URI uri) {
+  	uri.getPackage + "." + uri.javaName
+  }
+  
+  def getSrcRelativePath(URI uri) {
+  	uri.path.replaceAll("/resource/[^/]+/src", "")
+  }
+  
+  def getPackage(URI uri) {
+  	uri.srcRelativePath.replaceAll("/[^/]+$", "").replaceAll("/", ".").replaceFirst(".", "")
+  }
 }

@@ -4,11 +4,12 @@
 package org.eglipse.lang.glsl.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eglipse.lang.glsl.generator.GlslGenerator;
 import org.eglipse.lang.glsl.highlight.GLSLAntlrTokenToAttributeIdMapper;
 import org.eglipse.lang.glsl.highlight.GLSLHighlightingConfiguration;
-
 
 import com.google.inject.Binder;
 
@@ -25,6 +26,8 @@ public class GlslUiModule extends org.eglipse.lang.glsl.ui.AbstractGlslUiModule 
 		
 		binder.bind(IHighlightingConfiguration.class).to(GLSLHighlightingConfiguration.class);
 		binder.bind(AbstractAntlrTokenToAttributeIdMapper.class).to(GLSLAntlrTokenToAttributeIdMapper.class);
+		
+		//binder.bind(IGenerator.class).to(GlslGenerator.class);
 		
 		super.configure(binder);
 	}

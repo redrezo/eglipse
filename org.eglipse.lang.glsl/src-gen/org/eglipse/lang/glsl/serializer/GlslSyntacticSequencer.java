@@ -16,7 +16,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.eglipse.lang.glsl.services.GlslGrammarAccess;
 
 @SuppressWarnings("all")
-public class AbstractGlslSyntacticSequencer extends AbstractSyntacticSequencer {
+public class GlslSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected GlslGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_Atomic_LeftParenthesisKeyword_5_0_a;
@@ -76,91 +76,162 @@ public class AbstractGlslSyntacticSequencer extends AbstractSyntacticSequencer {
 		return "";
 	}
 	
+	/**
+	 * terminal BREAK: 'break';
+	 */
 	protected String getBREAKToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "break";
 	}
+	
+	/**
+	 * terminal CASE: 'case';
+	 */
 	protected String getCASEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "case";
 	}
+	
+	/**
+	 * terminal COLON: ':';
+	 */
 	protected String getCOLONToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return ":";
 	}
+	
+	/**
+	 * terminal CONTINUE: 'continue';
+	 */
 	protected String getCONTINUEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "continue";
 	}
+	
+	/**
+	 * terminal DEFAULT: 'default';
+	 */
 	protected String getDEFAULTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "default";
 	}
+	
+	/**
+	 * terminal DISCARD: 'discard';
+	 */
 	protected String getDISCARDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "discard";
 	}
+	
+	/**
+	 * terminal DO: 'do';
+	 */
 	protected String getDOToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "do";
 	}
+	
+	/**
+	 * terminal ELSE: 'else';
+	 */
 	protected String getELSEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "else";
 	}
+	
+	/**
+	 * terminal FOR: 'for';
+	 */
 	protected String getFORToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "for";
 	}
+	
+	/**
+	 * terminal IF: 'if';
+	 */
 	protected String getIFToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "if";
 	}
+	
+	/**
+	 * terminal LEFT_BRACE: '{';
+	 */
 	protected String getLEFT_BRACEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "{";
 	}
+	
+	/**
+	 * terminal QUESTION: '?';
+	 */
 	protected String getQUESTIONToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "?";
 	}
+	
+	/**
+	 * terminal RETURN: 'return';
+	 */
 	protected String getRETURNToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "return";
 	}
+	
+	/**
+	 * terminal RIGHT_BRACE: '}';
+	 */
 	protected String getRIGHT_BRACEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "}";
 	}
+	
+	/**
+	 * terminal SEMICOLON: ';';
+	 */
 	protected String getSEMICOLONToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return ";";
 	}
+	
+	/**
+	 * terminal SWITCH: 'switch';
+	 */
 	protected String getSWITCHToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "switch";
 	}
+	
+	/**
+	 * terminal VOID: 'void';
+	 */
 	protected String getVOIDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "void";
 	}
+	
+	/**
+	 * terminal WHILE: 'while';
+	 */
 	protected String getWHILEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
@@ -213,7 +284,7 @@ public class AbstractGlslSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     (DISCARD SEMICOLON) | (BREAK SEMICOLON) | (CONTINUE SEMICOLON)
+	 *     (BREAK SEMICOLON) | (DISCARD SEMICOLON) | (CONTINUE SEMICOLON)
 	 */
 	protected void emit_JumpStatement___BREAKTerminalRuleCall_1_0_SEMICOLONTerminalRuleCall_1_1___or___CONTINUETerminalRuleCall_0_0_SEMICOLONTerminalRuleCall_0_1___or___DISCARDTerminalRuleCall_4_0_SEMICOLONTerminalRuleCall_4_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
