@@ -6,5 +6,9 @@
    <feature url="features/org.eglipse.lang.glsl.editor.feature_0.0.1.qualifier.jar" id="org.eglipse.lang.glsl.editor.feature" version="0.0.1.qualifier">
       <category name="eglipse"/>
    </feature>
+   <feature url="features/org.eclipse.xtend.sdk_2.3.1.v201208210947.jar" id="org.eclipse.xtend.sdk" version="2.3.1.v201208210947">
+      <category name="deps"/>
+   </feature>
    <category-def name="eglipse" label="eglipse - OpenGL Tooling for eclipse"/>
+   <category-def name="deps" label="Dependencies"/>
 </site>
