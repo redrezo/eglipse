@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target name="eglipse" sequenceNumber="40">
+<locations>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.platform.feature.group" version="3.7.2.v20120207-1839-9gF7UHPDFxGjd-PqDr2jX_4yKaumkoHTz04_q-q"/>
+<unit id="org.eclipse.rcp.source.feature.group" version="3.7.2.v20120120-1424-9DB5FmnFq5JCf1UA38R-kz0S0272"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.7.2.v20120130-0943"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.7.1.R37x_v20110907-7M7W8i8eNV4WsRkue-4Vq4J6pCyW"/>
+<unit id="org.eclipse.pde.feature.group" version="3.7.2.v20120120-1420-7b7rFUOFEx2Xnqafnpz0E--0"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.0.1.v201108020636"/>
+<unit id="org.eclipse.emf.ecoretools.sdk.feature.group" version="1.0.0.v20110608-1633"/>
+<unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.0.1.v201108020809"/>
+<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.0.1.v201108020506"/>
+<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.1.1.v201108020506"/>
+<unit id="org.eclipse.xpand.sdk.feature.group" version="1.1.1.v201108020519"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.7.2.v20120120-1414-7z8gFcuFMP7BW5XTz0jLTnz0l9B1"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.hamcrest.core" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.core.source" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.integration.source" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.generator" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.generator.source" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.integration" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.library" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.library.source" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.text" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.text.source" version="1.1.0.v20090501071000"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20110523182458/repository"/>
+</location>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.mwe.core.feature.group" version="1.2.1.v201205220632"/>
+<unit id="org.eclipse.emf.mwe.doc.feature.group" version="1.2.1.v201205220632"/>
+<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.2.1.v201205220632"/>
+<unit id="org.eclipse.emf.mwe.ui.feature.group" version="1.2.1.v201205220632"/>
+<unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.3.0.v201205221035"/>
+<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.3.0.v201205220632"/>
+<unit id="org.eclipse.xtend.m2e.feature.group" version="2.3.0.v201205220958"/>
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.3.0.v201205220958"/>
+<unit id="org.eclipse.xtext.xbase.feature.group" version="2.3.0.v201205220958"/>
+<unit id="org.eclipse.xtext.runtime.feature.group" version="2.3.0.v201205220958"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.0.v201205220958"/>
+<unit id="org.eclipse.xtext.ui.feature.group" version="2.3.0.v201205220958"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones/"/>
+</location>
+</locations>
+<environment>
+<os>win32</os>
+<ws>win32</ws>
+<arch>x86_64</arch>
+</environment>
+</target>

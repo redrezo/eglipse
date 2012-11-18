@@ -3,16 +3,11 @@
  */
 package org.eglipse.lang.glsl.generator
 
-import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.generator.*
-
-import org.eglipse.lang.glsl.glsl.*
-
-import static extension org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import org.eclipse.emf.common.util.URI
+import org.eglipse.lang.glsl.glsl.SourceFile
 
 //org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 
@@ -28,7 +23,7 @@ class GlslGenerator implements IGenerator {
 		'''
 		package «resource.URI.getPackage»;
 		
-		import java.net.URI;
+		import java.net.URL;
 		import java.io.InputStream;
 		
 		public class «resource.URI.javaName» {
@@ -36,7 +31,7 @@ class GlslGenerator implements IGenerator {
 			public static InputStream asInputStream() {
 				return «resource.URI.javaName».class.getClassLoader().getResourceAsStream("«resource.URI.fileName»");
 			}
-			public static URI asURI() {
+			public static URL asURL() {
 				return «resource.URI.javaName».class.getClassLoader().getResource("«resource.URI.fileName»");
 			}
 			

@@ -10,7 +10,7 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eglipse.lang.glsl.glsl.SourceFile;
 
 @SuppressWarnings("all")
@@ -32,7 +32,7 @@ public class GlslGenerator implements IGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("import java.net.URI;");
+    _builder.append("import java.net.URL;");
     _builder.newLine();
     _builder.append("import java.io.InputStream;");
     _builder.newLine();
@@ -63,7 +63,7 @@ public class GlslGenerator implements IGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public static URI asURI() {");
+    _builder.append("public static URL asURL() {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("return ");
@@ -170,31 +170,31 @@ public class GlslGenerator implements IGenerator {
   public String getFileName(final URI uri) {
     String _package = this.getPackage(uri);
     String _replace = _package.replace(".", "/");
-    String _operator_plus = StringExtensions.operator_plus(_replace, "/");
+    String _operator_plus = ObjectExtensions.operator_plus(_replace, "/");
     String _lastSegment = uri.lastSegment();
-    String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, _lastSegment);
+    String _operator_plus_1 = ObjectExtensions.operator_plus(_operator_plus, _lastSegment);
     return _operator_plus_1;
   }
   
   public String getJavaFileName(final URI uri) {
     String _javaNameWithPackage = this.getJavaNameWithPackage(uri);
     String _replace = _javaNameWithPackage.replace(".", "/");
-    String _operator_plus = StringExtensions.operator_plus(_replace, ".java");
+    String _operator_plus = ObjectExtensions.operator_plus(_replace, ".java");
     return _operator_plus;
   }
   
   public String getJavaName(final URI uri) {
     String _lastSegment = uri.lastSegment();
     String _replaceAll = _lastSegment.replaceAll(".glsl", "");
-    String _operator_plus = StringExtensions.operator_plus(_replaceAll, "Shader");
+    String _operator_plus = ObjectExtensions.operator_plus(_replaceAll, "Shader");
     return _operator_plus;
   }
   
   public String getJavaNameWithPackage(final URI uri) {
     String _package = this.getPackage(uri);
-    String _operator_plus = StringExtensions.operator_plus(_package, ".");
+    String _operator_plus = ObjectExtensions.operator_plus(_package, ".");
     String _javaName = this.getJavaName(uri);
-    String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, _javaName);
+    String _operator_plus_1 = ObjectExtensions.operator_plus(_operator_plus, _javaName);
     return _operator_plus_1;
   }
   
